@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { getFriends } from "@/app/api-services/friendService";
+import Link from "next/link";
 
 const AddExpense = () => {
   const [name, setName] = useState("");
@@ -129,7 +130,17 @@ const AddExpense = () => {
 
   return (
     <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg space-y-6">
-      <h2 className="text-2xl font-bold text-gray-800">Add Expense</h2>
+      {/* <h2 className="text-2xl font-bold text-gray-800">Add Expense</h2> */}
+      <div className="flex justify-between items-center mt-2 mb-3">
+        <h2 className="text-2xl font-semibold">Add Expense</h2>
+
+        <Link
+          href="/dashboard/expenses"
+          className="text-white-600 hover:text-white-800 text-lg"
+        >
+          Back
+        </Link>
+      </div>
 
       {/* Expense Name */}
       <div>
