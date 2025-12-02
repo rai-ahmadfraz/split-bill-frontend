@@ -220,25 +220,7 @@ const AddExpense = () => {
       </div>
 
       {!isPersonal && (
-        <>
-          {/* Paid By */}
-          <div>
-            <label className="block text-base-content mb-2 font-medium">Paid By</label>
-            <select
-              className="w-full border border-base-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              value={paidBy}
-              onChange={(e) => setPaidBy(e.target.value)}
-            >
-              <option value="">Select person</option>
-              {participants
-                .filter((p) => p.selected) // only selected participants
-                .map((p) => (
-                  <option key={p.id} value={p.id}>
-                    {p.name} {p.fixed && "(You)"}
-                  </option>
-                ))}
-            </select>
-          </div>
+        <>          
 
           {/* Share Type */}
           <div>
@@ -283,6 +265,25 @@ const AddExpense = () => {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Paid By */}
+          <div>
+            <label className="block text-base-content mb-2 font-medium">Paid By</label>
+            <select
+              className="w-full border border-base-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              value={paidBy}
+              onChange={(e) => setPaidBy(e.target.value)}
+            >
+              <option value="">Select person</option>
+              {participants
+                .filter((p) => p.selected) // only selected participants
+                .map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.name} {p.fixed && "(You)"}
+                  </option>
+                ))}
+            </select>
           </div>
         </>
       )}

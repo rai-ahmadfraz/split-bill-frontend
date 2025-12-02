@@ -72,12 +72,9 @@ const SearchFriends = () => {
   const addUser = async (userId: number) => {
     try {
       await addFriend(userId);
-      // Optional: Remove the user from results or show success message
-      // You can add a toast notification here
       alert('Friend request sent successfully!');
     } catch (error) {
       console.error('Failed to add friend:', error);
-      alert('Failed to send friend request. Please try again.');
     }
   }
 

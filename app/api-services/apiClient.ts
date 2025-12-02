@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 
-const API_URL = process.env.API_URL ||"http://ec2-35-170-64-96.compute-1.amazonaws.com:8000";
+const API_URL = process.env.API_URL ||"http://ec2-35-170-64-96.compute-1.amazonaws.com:8100";
 
 const getToken = async () => {
   const cookie = await cookies();
