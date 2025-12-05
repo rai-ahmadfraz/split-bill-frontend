@@ -7,7 +7,7 @@ const cookiesOptions = {
   secure: process.env.NODE_ENV === "production" || false,
   sameSite: "lax" as const,
   path: "/",
-  expires: new Date(Date.now() + 10 * 60 * 1000) // 10 minutes
+  expires: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),
 
 };
 export const setTheme = async (themeColor: string) => {

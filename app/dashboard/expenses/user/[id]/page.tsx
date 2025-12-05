@@ -1,6 +1,6 @@
-import { redirect } from 'next/navigation';
-import { getFriends } from '@/app/api-services/friendService';
-import { Friend } from '@/app/interfaces/user';
+// import { redirect } from 'next/navigation';
+// import { getFriends } from '@/app/api-services/friendService';
+// import { Friend } from '@/app/interfaces/user';
 import { getExpenseByFriendId } from '@/app/api-services/expenseService';
 import ExpenseSummary from '@/app/interfaces/expense';
 import { formatCurrency,formatDate } from '@/lib/common';
@@ -8,15 +8,15 @@ import { formatCurrency,formatDate } from '@/lib/common';
 export default async function UserExpenses({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   
-  const friends = await getFriends();
-  const isFriend = friends.some((friend: Friend) => friend.id === parseInt(id));
+  // const friends = await getFriends();
+  // const isFriend = friends.some((friend: Friend) => friend.id === parseInt(id));
 
-  if (!isFriend) {
-    redirect('/dashboard?error=not_friend');
-  }
+  // if (!isFriend) {
+  //   redirect('/dashboard?error=not_friend');
+  // }
 
   const expenseData: ExpenseSummary = await getExpenseByFriendId(parseInt(id));
-  const friend = friends.find((f: Friend) => f.id === parseInt(id));
+  // const friend = friends.find((f: Friend) => f.id === parseInt(id));
 
   return (
     <div className="min-h-screen bg-base-100 py-8 mb-20">
@@ -24,7 +24,8 @@ export default async function UserExpenses({ params }: { params: Promise<{ id: s
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-base-content mb-2">
-            Expenses with {friend?.name || 'Friend'}
+            Expense History
+            {/* Expenses with {friend?.name || 'Friend'} */}
           </h1>
           <div className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium ${
             expenseData.summary.netBalance < 0 
