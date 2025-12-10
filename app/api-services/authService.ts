@@ -19,7 +19,7 @@ export const login = async (formData:any) => {
   const requestData = Object.fromEntries(formData.entries()) as LoginFormData;
   const {email,password} = requestData;
 
-  const res = await fetch(`${process.env.API_URL || "http://ec2-35-170-64-96.compute-1.amazonaws.com:8100"}/login`, {
+  const res = await fetch(`${process.env.API_URL || "https://api.expensehub.online"}/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -51,7 +51,7 @@ export const registerUser = async (formData:any) => {
     await setFlashMessage("Password must have 8+ chars, 1 uppercase, 1 number, 1 symbol");
     return;
   }
-  const res = await fetch(`${process.env.API_URL || "http://ec2-35-170-64-96.compute-1.amazonaws.com:8100"}/register`, {
+  const res = await fetch(`${process.env.API_URL || "https://api.expensehub.online"}/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(requestData),
