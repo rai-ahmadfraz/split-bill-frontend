@@ -24,7 +24,7 @@ const Dashboard: React.FC = async () => {
   const expenseSummary: ExpenseSummaryResponse = await getExpenseDashboardSummary();
   const { summary, users } = expenseSummary;
   return (
-    <div className="min-h-screen bg-base-200 p-4 md:p-6 mb-10">
+    <div className="min-h-screen bg-base-200 p-4 md:p-6 mb-20">
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Header */}
         <div className="text-center md:text-left">

@@ -115,7 +115,7 @@ const LandingPage: React.FC = async () => {
               <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg">
                 <span className="text-white font-bold text-xl">$</span>
               </div>
-              <div className="hidden sm:block">
+              <div>
                 <div className="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
                   Expense Hub
                 </div>
@@ -160,32 +160,34 @@ const LandingPage: React.FC = async () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <button className="md:hidden text-gray-600 hover:text-green-600">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button 
+              className="md:hidden text-gray-600 hover:text-green-600 p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              id="mobile-menu-button"
+              aria-label="Toggle mobile menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
 
-          {/* Mobile Navigation Menu */}
-          <div className="md:hidden bg-white border-t border-gray-100 py-4 space-y-4 hidden">
-            <Link href="#features" className="block text-gray-600 hover:text-green-600 px-4 py-2">
+          {/* Mobile Navigation Menu - Hidden by default, shown when toggled */}
+          <div className="md:hidden bg-white border-t border-gray-100 py-4 space-y-4 hidden" id="mobile-menu">
+            <Link href="#features" className="block text-gray-600 hover:text-green-600 px-4 py-3 hover:bg-gray-50 rounded-lg transition-colors font-medium">
               Features
             </Link>
-            <Link href="#free" className="block text-gray-600 hover:text-green-600 px-4 py-2">
+            <Link href="#free" className="block text-gray-600 hover:text-green-600 px-4 py-3 hover:bg-gray-50 rounded-lg transition-colors font-medium">
               It's Free!
             </Link>
-            <Link href="#testimonials" className="block text-gray-600 hover:text-green-600 px-4 py-2">
+            <Link href="#testimonials" className="block text-gray-600 hover:text-green-600 px-4 py-3 hover:bg-gray-50 rounded-lg transition-colors font-medium">
               Testimonials
             </Link>
-            <div className="pt-4 border-t border-gray-100 space-y-4 px-4">
-              <Link href="/login" className="block text-center text-gray-600 hover:text-green-600 py-2">
-                Sign In
-              </Link>
-              <Link href="/register" className="block bg-gradient-to-r from-green-600 to-emerald-500 text-white text-center py-3 rounded-xl font-semibold">
-                Start Free
-              </Link>
-            </div>
+            <Link href="/login" className="block text-gray-600 hover:text-green-600 px-4 py-3 hover:bg-gray-50 rounded-lg transition-colors font-medium">
+              Sign In
+            </Link>
+            <Link href="/register" className="block bg-gradient-to-r from-green-600 to-emerald-500 text-white text-center font-semibold py-3 px-4 mx-4 rounded-xl hover:shadow-lg transition-all duration-300">
+              Start Free
+            </Link>
           </div>
         </div>
       </nav>
@@ -567,6 +569,39 @@ const LandingPage: React.FC = async () => {
           </div>
         </div>
       </footer>
+
+      {/* Mobile Menu Toggle Script */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            document.addEventListener('DOMContentLoaded', function() {
+              const mobileMenuButton = document.getElementById('mobile-menu-button');
+              const mobileMenu = document.getElementById('mobile-menu');
+              
+              if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                  mobileMenu.classList.toggle('hidden');
+                });
+                
+                // Close menu when clicking on a link
+                const mobileLinks = mobileMenu.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                  link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                  });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                  if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+                    mobileMenu.classList.add('hidden');
+                  }
+                });
+              }
+            });
+          `
+        }}
+      />
     </div>
   );
 };

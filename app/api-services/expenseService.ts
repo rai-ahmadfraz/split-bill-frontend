@@ -7,6 +7,9 @@ import { cookies } from "next/headers";
 export async function getExpenseDashboardSummary() {
   return await apiFetch("/expenses/summary", { method: "GET" }) || [];
 }
+export async function getHistory() {
+  return await apiFetch("/expenses/history", { method: "GET" }) || [];
+}
 
 export async function getExpenseByFriendId(id: number) {
   return await apiFetch(`/expenses/member/${id}`, { method: "GET" }) || [];

@@ -14,7 +14,7 @@ const Settings = async () => {
   const loginUser: User | null = cookieValue ? JSON.parse(cookieValue) : null;
 
   return (
-    <div className="min-h-screen bg-base-200 p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen bg-base-200 p-4 sm:p-6 lg:p-8 mb-20">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-base-content">Settings</h1>
 
