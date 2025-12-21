@@ -21,6 +21,17 @@ export const getTheme = async () => {
     return theme;
 }
 
+export const setCurrency = async (currencyCode: string) => {
+    const cookieStore = await cookies();
+    cookieStore.set("currency", currencyCode, cookiesOptions);
+}
+
+export const getCurrency = async () => {
+    const cookieStore = await cookies();
+    const currency = cookieStore.get("currency")?.value || '$';
+    return currency;
+}
+
 export const setFlashMessage = async (message: string) => {
   const cookieStore = await cookies();
   cookieStore.set("flash_message", message, cookiesOptions);

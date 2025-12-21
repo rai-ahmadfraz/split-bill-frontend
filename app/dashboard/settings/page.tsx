@@ -2,6 +2,7 @@ import Link from "next/link";
 import LogoutBtn from "@/app/components/logoutBtn";
 import { cookies } from "next/headers";
 import ThemeOptions from "@/app/components/ThemeOptions";
+import CurrencyOptions from "@/app/components/CurrencyOptions";
 
 interface User {
   name: string;
@@ -42,6 +43,13 @@ const Settings = async () => {
                 <span className="label-text text-base-content">Select Theme</span>
               </label>
               <ThemeOptions />
+            </div>
+
+            <div className="form-control w-full max-w-xs mt-1">
+              <label className="label">
+                <span className="label-text text-base-content">Select Currency</span>
+              </label>
+              <CurrencyOptions />
             </div>
           </div>
         </div>
